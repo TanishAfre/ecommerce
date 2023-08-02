@@ -14,4 +14,9 @@ const createUser = asyncHandler(async( req, res ) => {
     }
 });
 
-module.exports = { createUser };
+const loginUserCtrl = asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+    console.log(email, password);
+});
+
+module.exports = { createUser, loginUserCtrl };
