@@ -2,7 +2,7 @@ const mongoose = require('mongoose'); // Erase if already required
 
 // Declare the Schema of the Mongo model
 var userSchema = new mongoose.Schema({
-    fitstname:{
+    firstname:{
         type:String,
         required:true,
     },
