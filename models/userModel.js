@@ -25,9 +25,9 @@ var userSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    isAdmin:{
+    role:{
         type:String,
-        default: "user"
+        default: "user",
     },
 });
 
