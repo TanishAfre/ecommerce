@@ -9,7 +9,9 @@ const authMiddleware = asyncHandler(async(req, res, next) => {
         try {
             if(token){
                 const decoded = jwt.verify(token, process.env.JWT_SECRET);
-                console.log(decoded);
+                const user = await User.findById(decoded?.id);
+                req.user = user;
+                next();
             }
         } catch (error) {
             throw new Error('Not Authorized token expired, please login again');
