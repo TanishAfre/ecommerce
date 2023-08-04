@@ -34,7 +34,7 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
         {
             new: true
         });
-        res.cookie('refreshToken', refreshToken, {
+        res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
             maxAge: 72 * 60 * 60 * 1000,
         });
@@ -50,6 +50,7 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
         throw new Error("Invalid Credentials");
     }
 });
+
 
 //handle refresh token
 const handleRefreshToken = asyncHandler(async (req, res) => {
@@ -69,6 +70,29 @@ const handleRefreshToken = asyncHandler(async (req, res) => {
         const accessToken = generateToken(user?._id);
         res.json({ accessToken });
     });
+});
+
+// Logout Functionality
+const logout = asyncHandler(async (req, res) => {
+    const cookie = req.cookies;
+    if(!cookie?.refreshToken) throw new Error('No Refresh Token in Cookies');
+    const refreshToken = cookie.refreshToken;
+    const user = await User.findOne({ refreshToken });
+    if(!user) {
+        res.clearCookie("refreshToken", {
+            httpOnly: true,
+            secure: true,
+        });
+        return res.sendStatus(204); // forbided
+    }
+    await User.findOneAndUpdate(refreshToken, {
+        refreshToken: "",
+    });
+    res.clearCookie("refreshToken", {
+        httpOnly: true,
+        secure: true,
+    });
+    return res.sendStatus(204); // forbided
 });
 
 // get all users
@@ -165,5 +189,4 @@ const unblockUser = asyncHandler(async (req, res) => {
     }
 });
 
-
-module.exports = { createUser, loginUserCtrl, getAllUser, getaUser, deleteaUser, updateaUser, blockUser, unblockUser, handleRefreshToken };
+module.exports = { createUser, loginUserCtrl, getAllUser, getaUser, deleteaUser, updateaUser, blockUser, unblockUser, handleRefreshToken, logout };
