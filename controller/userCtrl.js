@@ -2,9 +2,9 @@ const { generateToken } = require("../config/jwtToken");
 const User = require("../models/userModel");
 const asyncHandler = require("express-async-handler");
 const validateMongoDbId = require("../utiles/validateMongodbid");
-const generateRefreshToken = require("../config/refreshtoken");
+const { generateRefreshToken } = require("../config/refreshtoken");
 
-
+// Create a user
 const createUser = asyncHandler(async( req, res ) => {
     const email = req.body.email;
     const findUser = await User.findOne({ email: email});
@@ -18,12 +18,25 @@ const createUser = asyncHandler(async( req, res ) => {
     }
 });
 
+
+// Loging a user
 const loginUserCtrl = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
     
     // checking if useer exhists 
     const findUser = await User.findOne({ email });
     if (findUser && (await findUser.isPasswordMatched(password))) {
+        const refreshToken = await generateRefreshToken(findUser?.id);
+        const updateuser = await User.findOneAndUpdate(User.find._id, {
+            refreshToken: refreshToken,
+        }, 
+        {
+            new: true
+        });
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true,
+            maxAge: 72 * 60 * 60 * 1000,
+        });
         res.json({
             _id: findUser?._id,
             firstname: findUser?.firstname,
@@ -35,6 +48,12 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
     } else {
         throw new Error("Invalid Credentials");
     }
+});
+
+//handle refresh token
+const handleRefreshToken = asyncHandler(async (req, res) => {
+    const cookie = req.cookies;
+    console.log(cookie)
 });
 
 // get all users
@@ -132,4 +151,4 @@ const unblockUser = asyncHandler(async (req, res) => {
 });
 
 
-module.exports = { createUser, loginUserCtrl, getAllUser, getaUser, deleteaUser, updateaUser, blockUser, unblockUser };
+module.exports = { createUser, loginUserCtrl, getAllUser, getaUser, deleteaUser, updateaUser, blockUser, unblockUser, handleRefreshToken };
