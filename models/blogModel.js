@@ -1,28 +1,60 @@
 const mongoose = require("mongoose"); // Erase if already required
 
 // Declare the Schema of the Mongo model
-var userSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:true,
-        unique:true,
-        index:true,
-    },
-    email:{
-        type:String,
-        required:true,
-        unique:true,
-    },
-    mobile:{
-        type:String,
-        required:true,
-        unique:true,
-    },
-    password:{
+var blogSchema = new mongoose.Schema({
+    title:{
         type:String,
         required:true,
     },
+    description:{
+        type:String,
+        required:true,
+    },
+    category:{
+        type:String,
+        required:true,
+    },
+    numViews:{
+        type: Number,
+        default: 0,
+    },
+    inLiked: {
+        type: Boolean,
+        default: false
+    },
+    inLiked: {
+        type: Boolean,
+        default: false,
+    },
+    likes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+    }],
+    dislikes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+    }],
+    image:{
+        type: String,
+        default: "https://img.freepik.com/free-icon/blogging_318-883190.jpg"
+    },
+    author: {
+        type: String,
+        default: "Admin",
+
+    }
+},{
+    toJSON: {
+        virtuals: true,
+    },
+    toObject: {
+        virtuals: true,
+    },
+    timestamps:  true,
+    
 });
 
 //Export the model
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("Blog", blogSchema);
