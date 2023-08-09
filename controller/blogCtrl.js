@@ -71,7 +71,7 @@ const likeBlog = asyncHandler(async (req, res) => {
     // Finding blog to be liked
     const blog = await Blog.findById(blogId);
     // Finding login user
-    const loginUserId = req?.User?._id;
+    const loginUserId = req?.user?._id;
     // Finding if user has liked the blog or not
     const isLiked = blog?.isLiked;
     // FInding the user has disliked the post
