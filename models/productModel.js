@@ -50,7 +50,11 @@ var productSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             referance: "User",
         },
-    },],   
+    },],
+    totalrating: {
+        type: String,
+        default: 0,
+    },
 },
 {
     timestamps: true,
