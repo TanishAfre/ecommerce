@@ -30,7 +30,7 @@ app.use('/api/blog', blogRouter);
 app.use('/api/category', categoryRouter);
 app.use('/api/blogcategory', blogcategoryRouter);
 app.use('/api/brandcategory', brandRouter);
-app.use('/api/coupons', couponRouter);
+app.use('/api/coupon', couponRouter);
 
 
 
@@ -38,5 +38,5 @@ app.use(notFound);
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-    console.log(`Server us running at port ${PORT}`);
+    console.log(`Server is running at port ${PORT}`);
 });
