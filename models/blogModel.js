@@ -36,10 +36,7 @@ var blogSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
     }],
-    image:{
-        type: String,
-        default: "https://img.freepik.com/free-icon/blogging_318-883190.jpg"
-    },
+    image: [],
     author: {
         type: String,
         default: "Admin",
