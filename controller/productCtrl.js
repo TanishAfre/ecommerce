@@ -179,7 +179,7 @@ const rating = asyncHandler(async (req, res) => {
 });
 
 const uploadImages = asyncHandler(async (req, res) => {
-    console.log(req.file);
+    console.log(req.files);
 });
 
 
