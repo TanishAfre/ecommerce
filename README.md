@@ -31,8 +31,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Git Emojis
 
-:bug: for fixing bugs
-:construction: Work in progress
-:hammer: Updating work
-:heavy_minus_sign: Deleting files
-:pencil2: Fix Type
+:bug: for fixing bugs \
+:construction: Work in progress\
+:hammer: Updating work \
+:heavy_minus_sign: Deleting files \
+:pencil2: Fix Type \
