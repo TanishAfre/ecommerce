@@ -18,14 +18,13 @@ header .headerSearch{
     padding: 10px 20px;
 }
 
-header .headerSearch .selectDrop{
-    width: 100%;
+header .headerSearch .select{
+    width: 150px;
     font-size: 16px;
     font-weight: 500;
-    position: relative;
 }
 
-header .headerSearch .selectDrop:after{
+header .headerSearch .select:after{
     content: '';
     width: 1px;
     height: 30px;

@@ -17,7 +17,7 @@ const Header = () => {
                 {/* header search starts here */}
                 <div className="col-sm-6">
                     <div className="headerSearch d-flex align-item-center">
-                        <div className="selectDrop cursor">
+                        <div className="select cursor position-relative">
                             All Catagories
                             <Select />
                         </div>
