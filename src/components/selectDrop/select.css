@@ -3,6 +3,14 @@
     padding: 1px 0px;
 }
 
+.selectDropWrapper .openSelect .arrow{
+    position: absolute;
+    top: -3px;
+    right: 10px;
+    font-size: 30px;
+
+}
+
 .selectDrop{
     width: 300px;
     height: auto;

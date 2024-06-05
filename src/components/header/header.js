@@ -25,6 +25,10 @@ const Header = () => {
                     </div>
                 </div>
                 {/* header search ends here */}
+
+                <div className="col-sm-6">
+                    <Select />
+                </div>
             </div>
         </div>
       </header>
