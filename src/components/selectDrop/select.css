@@ -1,10 +1,15 @@
+.selectDropWrapper .openSelect{
+    display: block;
+    padding: 1px 0px;
+}
+
 .selectDrop{
     width: 300px;
-    height: 300px;
+    height: auto;
     background: #fff;
     position: absolute;
     top: 140%;
-    left: -20px;
+    left: -18px;
     z-index: 100;
     box-shadow: 0 3px 6px rgb(0 0 0 / 20%);
     padding: 15px;
@@ -16,4 +21,33 @@
     border: 1px solid #8dc442;
     outline: none;
     padding: 0px 10px;
+}
+
+.selectDrop .searchResults{
+    width: 100%;
+    margin: 0%;
+    padding: 10px 0px;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.selectDrop .searchResults::-webkit-scrollbar {
+    width: 5px !important;
+}
+
+.selectDrop .searchResults::-webkit-scrollbar-thumb{
+    background: #ccc !important;
+}
+
+.selectDrop .searchResults li{
+    list-style: none;
+    margin-top: 10px;
+    font-size: 14px;
+    width: 100%;
+    padding: 10px;
+}
+
+.selectDrop .searchResults li:hover{
+    background: #8dc442;
+    color: #fff;
 }

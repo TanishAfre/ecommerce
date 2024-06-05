@@ -17,11 +17,7 @@ const Header = () => {
                 {/* header search starts here */}
                 <div className="col-sm-6">
                     <div className="headerSearch d-flex align-item-center">
-                        <div className="select cursor position-relative">
-                            All Catagories
-                            <Select />
-                        </div>
-
+                        <Select />
                         <div className="searchBox">
                             <input type="text" placeholder="Search for fresh fruits or vegetables" />
                             <SearchIcon className="searchIcon cursor" />
