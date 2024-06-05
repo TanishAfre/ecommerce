@@ -51,3 +51,8 @@
     background: #8dc442;
     color: #fff;
 }
+
+.selectDrop .searchResults li.active{
+    background: #e2e2e2;
+    color: black !important;
+}
