@@ -29,7 +29,7 @@ const Select = () => {
                     isOpenSelect===true && 
                     <div className="selectDrop cursor">
                         <div className="searchField">
-                            <input type="text" />
+                            <input type="text" placeholder="Search here..."/>
                         </div>
                         <ul className="searchResults">
                             <li onClick={()=>closeSelect(0, 'All Catagory')} className={`${selectedIndex===0 ? 'active':''}`}>All Catagory</li>
