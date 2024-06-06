@@ -10,7 +10,8 @@ const Select = ({data, placeholder, icon}) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [selectedIten, setSelectedItem] = useState(placeholder);
 
-
+    const [listData, setListData] = useState(data);
+    const [listData2, setListData2] = useState(data);
 
     const openSelect = () => {
         setIsOpenSelect(!isOpenSelect);
@@ -22,6 +23,20 @@ const Select = ({data, placeholder, icon}) => {
         setSelectedItem(name);
     }
 
+    const FilterList = (e) => {
+        const keyword = e.target.value.toLowerCase();
+        //console.log(keyword);
+        
+        const list = listData2.filter((item) => {
+            return item.toLowerCase().includes(keyword);
+        });
+
+        const list2 = list.filter((item,index)=> list.indexOf(item) === index);
+
+        //console.log(list);
+        setListData(list2);
+    }
+
     return (
         <ClickAwayListener onClickAway={() => setIsOpenSelect(false)}>
             <div className="selectDropWrapper cursor position-relative">
@@ -31,12 +46,12 @@ const Select = ({data, placeholder, icon}) => {
                     isOpenSelect===true && 
                     <div className="selectDrop cursor">
                         <div className="searchField">
-                            <input type="text" placeholder="Search here..."/>
+                            <input type="text" placeholder="Search here..." onChange={FilterList}/>
                         </div>
                         <ul className="searchResults">
                         <li key={0} onClick={()=>closeSelect(0, placeholder)} className={`${selectedIndex===0 ? 'active':''}`}>{placeholder}</li>
                         {
-                            data.map((item, index) => {
+                            listData.map((item, index) => {
                                 return (
                                     <li key={index+1} onClick={()=>closeSelect(index+1, item)} className={`${selectedIndex===index+1 ? 'active':''}`}>{item}</li>
                                 )

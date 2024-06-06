@@ -110,8 +110,7 @@ const Header = () => {
                             <div className="list-inlist item">
                                 <span>
                                     <PermIdentityOutlinedIcon />
-                                    <span className="badge bg-success rounded-circle">4</span>
-                                    Arrount
+                                    Account
                                 </span>
                             </div>
                         </div>
