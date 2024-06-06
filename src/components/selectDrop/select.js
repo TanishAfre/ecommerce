@@ -8,7 +8,7 @@ const Select = ({data, placeholder, icon}) => {
 
     const [isOpenSelect, setIsOpenSelect] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(0);
-    const [selectedIten, setSelectedItem] = useState(placeholder);
+    const [selectedItem, setSelectedItem] = useState(placeholder);
 
     const [listData, setListData] = useState(data);
     const [listData2, setListData2] = useState(data);
@@ -41,7 +41,7 @@ const Select = ({data, placeholder, icon}) => {
         <ClickAwayListener onClickAway={() => setIsOpenSelect(false)}>
             <div className="selectDropWrapper cursor position-relative">
                 {icon}
-                <span className="openSelect" onClick={openSelect} >{selectedIten}<ArrowDropDownIcon className="arrow" /></span>   
+                <span className="openSelect" onClick={openSelect} >{selectedItem.length>14 ? selectedItem.substr(0,14)+'...' : selectedItem}<ArrowDropDownIcon className="arrow" /></span>   
                 {
                     isOpenSelect===true && 
                     <div className="selectDrop cursor">

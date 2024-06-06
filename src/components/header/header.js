@@ -9,9 +9,19 @@ import CompareIcon from '@mui/icons-material/Compare';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
+import Button from '@mui/material/Button';
+import PersonIcon from '@mui/icons-material/Person';
+import MapIcon from '@mui/icons-material/Map';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import DiscountIcon from '@mui/icons-material/Discount';
+import SettingsIcon from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
 
 const Header = () => {
+
+    const [isOpenDropDown, setIsOpenDropDown] = useState(false);
 
     const [catagories, setCatagories] = useState([ 
         'Milk And Dairy',
@@ -106,14 +116,26 @@ const Header = () => {
                                 </span>
                             </div>
                         </div>
-                        <div className="list list-inline mb-0 headerTabs">
-                            <div className="list-inlist item">
-                                <span>
+                        <ul className="list list-inline mb-0 headerTabs">
+                            <li className="list-inlist item">
+                                <span  onClick={() => setIsOpenDropDown(!isOpenDropDown)}>
                                     <PermIdentityOutlinedIcon />
                                     Account
                                 </span>
-                            </div>
-                        </div>
+
+                                {
+                                    isOpenDropDown!==false &&
+                                    <ul className="dropdownMenu">
+                                    <li><Button className="align-items-center"><PersonIcon />My Account</Button></li>
+                                    <li><Button><MapIcon />Orders tracking</Button></li>
+                                    <li><Button><DiscountIcon />My Vouchers</Button></li>
+                                    <li><Button><FavoriteIcon />Wishlist</Button></li>
+                                    <li><Button><SettingsIcon />Settings</Button></li>
+                                    <li><Button><LogoutIcon />Sign Out</Button></li>
+                                </ul>
+                                }
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
