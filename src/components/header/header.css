@@ -17,6 +17,7 @@ header .headerSearch{
     height: 45px;
     border: 1px solid #8dc442;
     padding: 10px 20px;
+    border-radius: 4px;
 }
 
 header .headerSearch .selectDropWrapper{
@@ -84,9 +85,12 @@ header .countryWrapper .openSelect{
 .rMost{
     margin-top: 0px
 }
-
-.rMost .headerTabs{
+.rMost .headerTabs {
     padding-left: 40px;
+    display: flex;
+    list-style: none; /* Add this line */
+    padding: 0; /* Add this line */
+    margin: 0; /* Add this line */
 }
 
 .rMost .headerTabs .list-inlist{
@@ -100,6 +104,7 @@ header .countryWrapper .openSelect{
     cursor: pointer;
     display: flex;
     align-items: center;
+    margin-left: 40px;
 }
 
 .rMost .headerTabs .list-inlist span .badge{
@@ -121,7 +126,7 @@ header .countryWrapper .openSelect{
     position: absolute;
     top: 140%;
     right: -50px;
-    width: 220%;
+    width: 140%;
     height: auto;
     background: #fff;
     box-shadow: 0px 3px 6px rgb(0 0 0 / 20%);
@@ -149,4 +154,8 @@ ul.dropdownMenu {
 .dropdownMenu li button svg{
     opacity: 0.7;
     margin-right: 10px;
+}
+
+.dropdownMenu li button:hover{
+    background: #f1f1f1 !important;
 }

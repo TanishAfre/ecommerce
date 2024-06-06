@@ -88,54 +88,49 @@ const Header = () => {
                         <div className="countryWrapper cursor position-relative">
                             <Select data={countryList} placeholder={'Your Location'} icon={<LocationOnOutlinedIcon style={{ opacity:'0.5' }}/>} />
                         </div>
+                        <ClickAwayListener onClickAway={() => setIsOpenDropDown(false)}>
+                            <ul className="list list-inline mb-0 headerTabs">
+                                <li className="list-inlist item">
+                                    <span>
+                                        <CompareIcon />
+                                        <span className="badge bg-success rounded-circle">4</span>
+                                        Compare
+                                    </span>
+                                </li>
+                                <li className="list-inlist item">
+                                    <span>
+                                        <FavoriteBorderIcon />
+                                        <span className="badge bg-success rounded-circle">4</span>
+                                        Wishlist
+                                    </span>
+                                </li>
+                                <li className="list-inlist item">
+                                    <span>
+                                        <ShoppingCartOutlinedIcon />
+                                        <span className="badge bg-success rounded-circle">4</span>
+                                        Cart
+                                    </span>
+                                </li>
+                                <li className="list-inlist item">
+                                    <span  onClick={() => setIsOpenDropDown(!isOpenDropDown)}>
+                                        <PermIdentityOutlinedIcon />
+                                        Account
+                                    </span>
 
-                        <div className="list list-inline mb-0 headerTabs">
-                            <div className="list-inlist item">
-                                <span>
-                                    <CompareIcon />
-                                    <span className="badge bg-success rounded-circle">4</span>
-                                    Compare
-                                </span>
-                            </div>
-                        </div>
-                        <div className="list list-inline mb-0 headerTabs">
-                            <div className="list-inlist item">
-                                <span>
-                                    <FavoriteBorderIcon />
-                                    <span className="badge bg-success rounded-circle">4</span>
-                                    Wishlist
-                                </span>
-                            </div>
-                        </div>
-                        <div className="list list-inline mb-0 headerTabs">
-                            <div className="list-inlist item">
-                                <span>
-                                    <ShoppingCartOutlinedIcon />
-                                    <span className="badge bg-success rounded-circle">4</span>
-                                    Cart
-                                </span>
-                            </div>
-                        </div>
-                        <ul className="list list-inline mb-0 headerTabs">
-                            <li className="list-inlist item">
-                                <span  onClick={() => setIsOpenDropDown(!isOpenDropDown)}>
-                                    <PermIdentityOutlinedIcon />
-                                    Account
-                                </span>
-
-                                {
-                                    isOpenDropDown!==false &&
-                                    <ul className="dropdownMenu">
-                                    <li><Button className="align-items-center"><PersonIcon />My Account</Button></li>
-                                    <li><Button><MapIcon />Orders tracking</Button></li>
-                                    <li><Button><DiscountIcon />My Vouchers</Button></li>
-                                    <li><Button><FavoriteIcon />Wishlist</Button></li>
-                                    <li><Button><SettingsIcon />Settings</Button></li>
-                                    <li><Button><LogoutIcon />Sign Out</Button></li>
-                                </ul>
-                                }
-                            </li>
-                        </ul>
+                                    {
+                                        isOpenDropDown!==false &&
+                                        <ul className="dropdownMenu">
+                                        <li><Button className="align-items-center"><PersonIcon />My Account</Button></li>
+                                        <li><Button><MapIcon />Orders tracking</Button></li>
+                                        <li><Button><DiscountIcon />My Vouchers</Button></li>
+                                        <li><Button><FavoriteIcon />Wishlist</Button></li>
+                                        <li><Button><SettingsIcon />Settings</Button></li>
+                                        <li><Button><LogoutIcon />Sign Out</Button></li>
+                                    </ul>
+                                    }
+                                </li>
+                            </ul>
+                        </ClickAwayListener>
                     </div>
                 </div>
 
